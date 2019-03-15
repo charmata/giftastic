@@ -92,6 +92,10 @@ $(document).ready(function() {
   });
 
   $("body").on("click", "#topics .btn", function() {
+    if ($("#topics .btn.active")) {
+      $("#topics .btn.active").removeClass("active");
+    }
+    $(this).addClass("active");
     search($(this).attr("data-topic"));
   });
 });

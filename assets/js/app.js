@@ -6,7 +6,19 @@ var rating = "PG-13";
 var offset = 0;
 var query;
 
-var topics = [];
+var topics = [
+  "cat",
+  "dog",
+  "snake",
+  "chicken",
+  "pig",
+  "bird",
+  "turtle",
+  "ferret",
+  "hedgehog",
+  "serval",
+  "frog"
+];
 
 function search(url) {
   $.ajax({
@@ -33,7 +45,19 @@ function search(url) {
   });
 }
 
+function listTopics() {
+  $("#topics").empty();
+  for (var i = 0; i < topics.length; i++) {
+    var btn = $("<button>").addClass("btn btn-info");
+    btn.attr("data-topic", topics[i]);
+    btn.text(topics[i]);
+    $("#topics").append(btn);
+  }
+}
+
 $(document).ready(function() {
+  listTopics();
+
   $("#submit").on("click", function() {
     query = $("#search input").val();
 
@@ -50,6 +74,8 @@ $(document).ready(function() {
       "&q=" +
       query;
 
+    topics.push(query);
+    listTopics();
     $("#results .row").empty();
     search(queryUrl);
   });

@@ -1,6 +1,13 @@
 body {
   height: 100vh;
 }
+#topics {
+  margin: 10px;
+}
+#topics .btn {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 .gif-container {
   margin-bottom: 10px;
   height: 200px;
@@ -14,5 +21,5 @@ body {
 }
 .gif,
 .gif-thumb {
-  height: 90%;
+  height: 88%;
 }

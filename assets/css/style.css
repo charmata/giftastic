@@ -3,11 +3,16 @@ body {
 }
 .gif-container {
   margin-bottom: 10px;
-}
-.gif-caption {
-  font-size: small;
-}
-.gif {
   height: 200px;
   width: 100%;
+  overflow: hidden;
+}
+.gif-caption {
+  display: inline-block;
+  width: 100%;
+  font-size: small;
+}
+.gif,
+.gif-thumb {
+  height: 90%;
 }

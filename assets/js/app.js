@@ -20,11 +20,23 @@ var topics = [
   "frog"
 ];
 
-function search(url) {
+function search(q) {
+  var queryUrl =
+    endpoint +
+    "?api_key=" +
+    key +
+    "&limit=" +
+    limit +
+    "&offset" +
+    offset +
+    "&rating=" +
+    rating +
+    "&q=" +
+    q;
   $.ajax({
-    url: url
+    url: queryUrl
   }).then(function(response) {
-    //console.log(response.data);
+    $("#results .row").empty();
     response.data.forEach(imgObject => {
       var div = $("<div>").addClass("gif-container col-12 col-md-6 col-lg-4");
       var span = $("<span>")
@@ -60,24 +72,9 @@ $(document).ready(function() {
 
   $("#submit").on("click", function() {
     query = $("#search input").val();
-
-    var queryUrl =
-      endpoint +
-      "?api_key=" +
-      key +
-      "&limit=" +
-      limit +
-      "&offset" +
-      offset +
-      "&rating=" +
-      rating +
-      "&q=" +
-      query;
-
     topics.push(query);
     listTopics();
-    $("#results .row").empty();
-    search(queryUrl);
+    search(query);
   });
 
   $("body").on("click", "img", function() {
@@ -92,5 +89,9 @@ $(document).ready(function() {
         .next()
         .show();
     }
+  });
+
+  $("body").on("click", "#topics .btn", function() {
+    search($(this).attr("data-topic"));
   });
 });

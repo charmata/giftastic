@@ -1,0 +1,13 @@
+body {
+  height: 100vh;
+}
+.gif-container {
+  margin-bottom: 10px;
+}
+.gif-caption {
+  font-size: small;
+}
+.gif {
+  height: 200px;
+  width: 100%;
+}
